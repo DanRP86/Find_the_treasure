@@ -1,0 +1,37 @@
+# find the next hint in the wrong part of the code 👀
+# ---------------------------------------------------
+# ❌ NEVER DO THIS:
+# Hardcoding API keys directly in your source code is a huge security risk.
+# If this code gets shared or pushed to a public repo, your key is exposed.
+# ✅ Correct approach: Store secrets in environment variables (.env file) or use a secure vault.
+
+import os
+import openai
+
+openai.api_key = "sk-tnlk1234567890test2/3h3e3r3e3i3t3i3s"
+
+# ✅ RIGHT WAY:
+# from dotenv import load_dotenv
+# load_dotenv()
+# openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# ---------------------------------------------------
+# Funny treasure discovery logic:
+def discover_treasure():
+    print("🔍 Searching for the treasure...")
+    print("💡 Hint: The treasure is hidden where the mistake lives!")
+    print("👉 Look at the hardcoded key above. That's the WRONG way!")
+    print("✅ Next step: Move the key to a .env file and keep your secrets safe.")
+    print("🎯 When you do, you'll unlock the next clue: 'Stage 3 awaits in the vault!'")
+
+# Simulate calling OpenAI (mocked for fun)
+def fake_openai_call():
+    print("Pretending to call OpenAI with a fake key...")
+    response = {
+        "message": "Congratulations! You found the hint in the wrong place. Secrets belong in .env!"
+    }
+    return response
+
+if __name__ == "__main__":
+    discover_treasure()
+    print(fake_openai_call()["message"])

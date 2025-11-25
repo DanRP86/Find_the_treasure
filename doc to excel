@@ -1,0 +1,27 @@
+
+from docx import Document
+import openpyxl
+
+def doc_to_excel(doc_path, excel_path):
+    # Load the Word document
+    doc = Document(doc_path)
+    
+    # Create a new Excel workbook
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Document Content"
+    
+    # Write paragraphs from the Word doc into Excel rows
+    row = 1
+    for para in doc.paragraphs:
+        text = para.text.strip()
+        if text:  # Skip empty lines
+            ws.cell(row=row, column=1, value=text)
+            row += 1
+    
+    # Save the Excel file
+    wb.save(excel_path)
+    print(f"Content from '{doc_path}' saved to '{excel_path}'")
+
+# Example usage:
+doc_to_excel("input.docx", "output.xlsx")
